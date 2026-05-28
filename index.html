@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nice to meet you</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    background: #0F0F1A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .emoji {
+    font-size: 56px;
+    margin-bottom: 24px;
+    animation: wave 1.2s ease-in-out;
+    display: inline-block;
+  }
+
+  @keyframes wave {
+    0%   { transform: rotate(0deg); }
+    20%  { transform: rotate(20deg); }
+    40%  { transform: rotate(-10deg); }
+    60%  { transform: rotate(15deg); }
+    80%  { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  h1 {
+    color: #F0EDFF;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    color: #8B85B0;
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 14px 28px;
+    background: #6C63FF;
+    color: white;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn:hover { background: #5751D9; }
+  .btn:active { transform: scale(0.97); }
+
+  .hint {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #3d3860;
+  }
+</style>
+</head>
+<body>
+
+  <span class="emoji">👋</span>
+  <h1>Nice to meet you!</h1>
+  <p>Tu contacto se está guardando automáticamente…</p>
+
+  <a class="btn" id="btn" href="Heri_DF.vcf" download>Guardar contacto</a>
+  <p class="hint">Si no se descargó, pulsa el botón</p>
+
+<script>
+  const VCF = "Heri_DF.vcf";
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const a = document.createElement("a");
+      a.href = VCF;
+      a.download = VCF;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }, 600);
+  });
+</script>
+</body>
+</html>
